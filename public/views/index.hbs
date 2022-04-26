@@ -1,0 +1,187 @@
+<html lang="en">
+  <body>
+    <div id="elements">
+      <div id="carte">
+        <iframe
+          src="https://maps.google.com/maps?q=versailles&t=&z=13&ie=UTF8&iwloc=&output=embed"
+          width="1400"
+          height="500"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+        ></iframe>
+      </div>
+      <div id="recherche">
+        <form action="/index" method="post" id="search_form">
+          <div class="row">
+            <ul>
+              <li>
+                <label class="input_label">Gazole</label>
+                <input class="fuel_choice" type="checkbox" name="Gazole" />
+              </li>
+              <li>
+                <label class="input_label">SP95</label>
+                <input class="fuel_choice" type="checkbox" name="SP95" />
+              </li>
+              <li>
+                <label class="input_label">SP98</label>
+                <input class="fuel_choice" type="checkbox" name="SP98" />
+              </li>
+              <li>
+                <label class="input_label">E85</label>
+                <input class="fuel_choice" type="checkbox" name="E85" />
+              </li>
+              <li>
+                <label class="input_label">E10</label>
+                <input class="fuel_choice" type="checkbox" name="E10" />
+              </li>
+              <li>
+                <label class="input_label">GPL</label>
+                <input class="fuel_choice" type="checkbox" name="GPL" />
+              </li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="">
+              <label class="input_label" for="ville-recherche">Ville</label>
+              <div id="ville-recherche-groupe">
+                <input
+                  type="text"
+                  class="ville-search"
+                  id="ville-recherche"
+                  name="ville-recherche"
+                  placeholder="Ville à rechercher..."
+                />
+                <datalist
+                  class="ville-recherche-datalist"
+                  id="ville-recherche-results"
+                >
+                </datalist>
+              </div>
+              <div class="">
+                <label
+                  class="input_label"
+                  for="departement-recherche"
+                >Département</label>
+                <div id="departement-recherche-groupe">
+                  <input
+                    type="text"
+                    class="departement-search"
+                    id="departement-recherche"
+                    name="departement-recherche"
+                    placeholder="Departement à rechercher..."
+                  />
+                  <datalist
+                    class="departement-recherche-datalist"
+                    id="departement-recherche-results"
+                  >
+                  </datalist>
+                </div>
+              </div>
+              <input class="fuel_choice" type="submit" value="Rechercher"/>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="tableau">
+      <table id="tableau_resultats">
+        <tbody>
+          <tr>
+            <th>
+              Stations
+            </th>
+            {{#if Gazole}}
+              <th>
+                Gazole
+              </th>
+            {{/if}}
+            {{#if SP98}}
+              <th>
+                SP98
+              </th>
+            {{/if}}
+            {{#if SP95}}
+              <th>
+                SP95
+              </th>
+            {{/if}}
+            {{#if E85}}
+              <th>
+                E85
+              </th>
+            {{/if}}
+            {{#if E10}}
+              <th>
+                E10
+              </th>
+            {{/if}}
+            {{#if GPL}}
+              <th>
+                GPL
+              </th>
+            {{/if}}
+          </tr>
+          <!--<tr class="pair">
+            <td>
+              <div class="table-row">
+                <div>
+                  <strong>
+                    BRUMANUMACLE U EXPRESS | Système U
+                  </strong>
+                  <br />
+                  1 rue de boinville
+                  <br />
+                  78660 Ablis
+                </div>
+                <div>
+                  <input type="button" value="Ajouter aux favoris" />
+                  <input type="button" value="Emplacement sur la carte" />
+                </div>
+              </div>
+            </td>
+            <td>
+              1.689
+            </td>
+            <td>
+              1.974
+            </td>
+          </tr>
+          <tr class="impair">
+            <td>
+              <div class="table-row">
+                <div>
+                  <strong>
+                    ACHERES EXPANSION | Leclerc
+                  </strong>
+                  <br />
+                  3 avenue wolfgang amadeus mozart
+                  <br />
+                  78260 Acheres
+                </div>
+                <div>
+                  <input type="button" value="Ajouter aux favoris" />
+                  <input type="button" value="Emplacement sur la carte" />
+                </div>
+              </div>
+            </td>
+            <td>
+              1.855
+            </td>
+            <td>
+              1.760
+            </td>
+          </tr>-->
+        </tbody>
+      </table>
+    </div>
+
+    <script src="script/search_fuel.js" type="text/javascript" defer></script>
+    <script
+      src="carbu/processCarbuData.js"
+      type="text/javascript"
+      defer
+    ></script>
+  </body>
+</html>
