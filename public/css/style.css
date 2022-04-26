@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
 
 *,
 *::before,
@@ -9,7 +10,7 @@
 body {
   width:100%;
   margin: 0;
-  font-family: "Segoe UI";
+  font-family: "Rubik", sans-serif;
   font-weight: 400;
   line-height: 1.5;
   text-align: left;
@@ -223,7 +224,7 @@ input[type=text], input[type=password], input[type=email] {
   margin: 8px 0;
   border: 1px solid #cccccc;
   border-radius:60px;
-  font-family: "Segoe UI";
+  font-family: "Rubik", sans-serif;
 }
 
 input[type=submit] {
@@ -235,11 +236,11 @@ input[type=submit] {
   cursor: pointer;
   width: 100%;
   border-radius:60px;
-  font-family: "Segoe UI";
+  font-family: "Rubik", sans-serif;
 }
 
 input[type=submit]:hover {
   background-color: white;
-  color: rgba(0, 181, 204);
-  border: 1px solid rgba(0, 181, 204);
+  color: #01b118;
+  border: 1px solid #01b118;
 }

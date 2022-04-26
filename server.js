@@ -166,7 +166,7 @@ const getData = async () => {
   fs.writeFileSync("data.json", FinalJSON);
   console.log('fichier data.json ecrit');
 };
-// getData();
+//getData();
 
 const readData = require('./server/carbu/processCarbuData');
 // readData.getDataJson('ville','Paris');
