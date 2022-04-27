@@ -24,7 +24,7 @@ ul {
 
 
 a {
- color: #22A1ED;
+ color: #01b118;
  text-decoration: none;
  background-color: transparent;
 }
@@ -45,6 +45,8 @@ img {
  width: 100%;
  padding-right: 20px;
  padding-left: 20px;
+width: 38%;
+margin: auto;
 }
 
 #carte {
@@ -85,9 +87,20 @@ img {
 .nav-link {
  display: block;
  padding: 0.5rem 1rem;
+  
+  
  /* couleur des link */ 
- color: rgba(255, 255, 255, 0.5);
+ color: white;
 }
+
+ /* surligner des link quand on les survole */
+ .nav-link:hover, .nav-link:focus{
+   text-decoration: underline;
+   text-decoration-color: white;
+   text-underline-position: under;
+   text-decoration-style: solid;
+   
+  }
 
 /* alignement des link a droite */ 
 .ml-auto{
@@ -110,9 +123,11 @@ img {
  padding-top: 0.3125rem;
  padding-bottom: 0.3125rem;
  margin-right: 1rem;
- font-size: 1.25rem;
+ font-size: 1.75rem;
+  
+  
 /* couleur du titre de la page*/
-color: #ffffff;
+color: white;
 }
 
 .navbar-nav {
@@ -129,16 +144,17 @@ color: #ffffff;
  flex-grow: 1;
 }
 
-/* propri du bouton qui represente l'icone */ 
+/* menu reduit (une fois la page retrecie) */ 
 .navbar-toggler {
  padding: 0.25rem 0.75rem;
  font-size: 1.25rem;
  line-height: 1;
- background-color: transparent;
- border: 1px solid transparent;
+ background-color: #27E293;
+ border: 1px solid white;
  border-radius: 0.25rem;
+  
  /* couleur des bordure de l'icone */
-  border-color: rgba(255, 255, 255, 0.501);
+  border-color: white;
 }
 
 /* propri de l'icone */ 
@@ -146,6 +162,8 @@ color: #ffffff;
  display: inline-block;
  width: 1.5em;
  height: 1.5em;
+  
+  
  /* l'icone */
   background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
@@ -158,8 +176,11 @@ button:not(:disabled){
 /* changement quand on clique sur le bouton*/ 
  button:focus {
   outline: 1px dotted;
-  outline: white solid 2px;
+  outline: white solid 1px;
  }
+
+
+
  /* borne inférieur de la taille de la page, on affiche le menu tel qu'il est 
     pas besoin du bouton/icone de menu*/ 
  @media (min-width: 860px) {
@@ -188,14 +209,14 @@ button:not(:disabled){
  /* couleur de link active pour la démarquer des autres*/
 .active > .nav-link
  {
- color: #ffffff;
+ color: #ff7300;
 }
 
 
 
 /* couleur de la barre de la barre de menu*/ 
 .bg-dark {
-  background-color: rgba(0, 181, 204);
+  background-color: #27E293 ;
  }
 
  /* box se connecter et s'inscrire*/
@@ -204,7 +225,8 @@ button:not(:disabled){
   margin:0 auto;
   margin-top:5%;
 }
-/* box */
+
+/* box se connecter et s'inscrire */
  form {
   padding: 30px;
   border: 1px solid #f1f1f1;
@@ -212,12 +234,14 @@ button:not(:disabled){
   background: #ffffff;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-/* box */ 
+
+/* box se connecter et s'inscrire */ 
 #container h1{
 width: 38%;
 margin: auto;
 }
 
+/* champs a remplir */
 input[type=text], input[type=password], input[type=email] {
   width: 100%;
   padding: 12px 20px;
@@ -228,7 +252,7 @@ input[type=text], input[type=password], input[type=email] {
 }
 
 input[type=submit] {
-  background-color: rgba(0, 181, 204);
+  background-color: #27E293;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -241,6 +265,23 @@ input[type=submit] {
 
 input[type=submit]:hover {
   background-color: white;
-  color: #01b118;
-  border: 1px solid #01b118;
+  color: #27E293;
+  border: 1px solid #27E293;
+}
+
+input[type=checkbox] {
+  position: relative;
+  width: 1em;
+  height: 1em;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  appearance: none;
+  outline: 0;
+  cursor: pointer;
+  transition: background 175ms cubic-bezier(0.1, 0.1, 0.25, 1);
+}
+
+input[type=checkbox]:checked {
+    border-color: #27E293;
+    background: #27E293;
 }

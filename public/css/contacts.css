@@ -29,7 +29,14 @@ table {
 
 .container-contacts thead th {
     position: sticky;
-    background-color: rgba(0, 181, 204);
+    background-color: #27E293;
+    color: #e6e7e8;
+    font-size: 15px;
+}
+
+.result-table thead th {
+    position: sticky;
+    background-color: #27E293;
     color: #e6e7e8;
     font-size: 15px;
 }

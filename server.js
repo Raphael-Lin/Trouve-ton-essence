@@ -81,32 +81,32 @@ app.use("/", userRoutes);
 
 // Startup page for the server
 app.get("/", function (req, res) {
-  res.render("index", { title: "Trouve ton essence !" });
+  res.render("index", { title: "Trouve Ton Essence" });
 });
 
 // get index.hbs
 app.get("/index", function (req, res) {
-  res.render("index", { title: "Trouve ton essence !" });
+  res.render("index", { title: "Trouve Ton Essence" });
 });
 
 // get login.hbs
 app.get("/login", function (req, res) {
-  res.render("login", { title: "Trouve ton essence !" });
+  res.render("login", { title: "Trouve Ton Essence" });
 });
 
 // get register.hbs
 app.get("/register", function (req, res) {
-  res.render("register", { title: "Trouve ton essence !"});
+  res.render("register", { title: "Trouve Ton Essence"});
 });
 
 // get contacts.hbs
 app.get("/contacts", function (req, res) {
-  res.render("contacts", { title: "Trouve ton essence !" });
+  res.render("contacts", { title: "Trouve Ton Essence" });
 });
 
 // post request index.hbs
 app.post("/index", function (req, res) {
-  var string_properties = '{"' + 'title' + '"' + ': ' + '"' + 'Trouve ton essence !' + '", ';
+  var string_properties = '{"' + 'title' + '"' + ': ' + '"' + 'Trouve Ton Essence' + '", ';
   if (req.body.Gazole) {
     string_properties += '"' + 'Gazole' + '"' + ': ' + '"' + 'true' + '", ';
   }

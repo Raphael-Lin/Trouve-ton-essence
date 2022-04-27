@@ -14,7 +14,7 @@
       <div id="recherche">
         <form action="/index" method="post" id="search_form">
           <div class="row">
-            <ul>
+            <ul style="list-style: none;">
               <li>
                 <label class="input_label">Gazole</label>
                 <input class="fuel_choice" type="checkbox" name="Gazole" />
@@ -86,8 +86,8 @@
     </div>
 
     <div id="tableau">
-      <table id="tableau_resultats">
-        <tbody>
+      <table id="tableau_resultats"  class="result-table">
+        <thead>
           <tr>
             <th>
               Stations
@@ -123,6 +123,8 @@
               </th>
             {{/if}}
           </tr>
+        </thead>
+        <tbody>
           <!--<tr class="pair">
             <td>
               <div class="table-row">
