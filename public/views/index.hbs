@@ -4,7 +4,7 @@
       <div id="carte">
         <iframe
           src="https://maps.google.com/maps?q=versailles&t=&z=13&ie=UTF8&iwloc=&output=embed"
-          width="1400"
+          width="100%"
           height="500"
           style="border:0;"
           allowfullscreen=""
@@ -12,7 +12,7 @@
         ></iframe>
       </div>
       <div id="recherche">
-        <form action="/index" method="post" id="search_form">
+        <form action="/index" method="post" id="search_form"  autocomplete="off">
           <div class="row">
             <ul style="list-style: none;">
               <li>
@@ -36,8 +36,8 @@
                 <input class="fuel_choice" type="checkbox" name="E10" />
               </li>
               <li>
-                <label class="input_label">GPL</label>
-                <input class="fuel_choice" type="checkbox" name="GPL" />
+                <label class="input_label">GPLc</label>
+                <input class="fuel_choice" type="checkbox" name="GPLc" />
               </li>
             </ul>
           </div>
@@ -63,20 +63,14 @@
                   class="input_label"
                   for="departement-recherche"
                 >Département</label>
-                <div id="departement-recherche-groupe">
-                  <input
-                    type="text"
-                    class="departement-search"
-                    id="departement-recherche"
-                    name="departement-recherche"
-                    placeholder="Departement à rechercher..."
-                  />
-                  <datalist
-                    class="departement-recherche-datalist"
-                    id="departement-recherche-results"
-                  >
-                  </datalist>
+                <div class="autocomplete">
+                <input id="input-departement" type="text" name="departement-recherche" placeholder="Département à rechercher...">
                 </div>
+                <script type="text/javascript" src="/script/autocomplete.js">
+                  </script>
+                <script>
+                  autocomplete(document.getElementById("input-departement"), departements);
+                </script>
               </div>
               <input class="fuel_choice" type="submit" value="Rechercher"/>
             </div>
@@ -117,25 +111,26 @@
                 E10
               </th>
             {{/if}}
-            {{#if GPL}}
+            {{#if GPLc}}
               <th>
-                GPL
+                GPLc
               </th>
             {{/if}}
           </tr>
         </thead>
         <tbody>
-          <!--<tr class="pair">
+          {{#each address}}
+          <tr>
             <td>
               <div class="table-row">
                 <div>
                   <strong>
-                    BRUMANUMACLE U EXPRESS | Système U
+                    {{[1].[0]}}
                   </strong>
                   <br />
-                  1 rue de boinville
+                    {{[1].[1]}}
                   <br />
-                  78660 Ablis
+                    {{[1].[2]}}
                 </div>
                 <div>
                   <input type="button" value="Ajouter aux favoris" />
@@ -143,38 +138,38 @@
                 </div>
               </div>
             </td>
+            {{#if ../Gazole}}
             <td>
-              1.689
+              {{[2].Gazole}}
             </td>
+            {{/if}}
+            {{#if ../SP98}}
             <td>
-              1.974
+              {{[2].SP98}}
             </td>
+            {{/if}}
+            {{#if ../SP95}}
+            <td>
+              {{[2].SP95}}
+            </td>
+            {{/if}}
+            {{#if ../E85}}
+            <td>
+              {{[2].E85}}
+            </td>
+            {{/if}}
+            {{#if ../E10}}
+            <td>
+              {{[2].E10}}
+            </td>
+            {{/if}}
+            {{#if ../GPLc}}
+            <td>
+              {{[2].GPLc}}
+            </td>
+            {{/if}}
           </tr>
-          <tr class="impair">
-            <td>
-              <div class="table-row">
-                <div>
-                  <strong>
-                    ACHERES EXPANSION | Leclerc
-                  </strong>
-                  <br />
-                  3 avenue wolfgang amadeus mozart
-                  <br />
-                  78260 Acheres
-                </div>
-                <div>
-                  <input type="button" value="Ajouter aux favoris" />
-                  <input type="button" value="Emplacement sur la carte" />
-                </div>
-              </div>
-            </td>
-            <td>
-              1.855
-            </td>
-            <td>
-              1.760
-            </td>
-          </tr>-->
+          {{/each}}
         </tbody>
       </table>
     </div>

@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
 
 * {
     margin: 0;
@@ -9,7 +9,7 @@
     width : 100%;
     display: flex;
     justify-content: center;
-    font-family: "Segoe UI";
+    font-family: "Rubik", sans-serif;
     background-color: rgb(255, 255, 255);
 }
 
@@ -29,16 +29,18 @@ table {
 
 .container-contacts thead th {
     position: sticky;
-    background-color: #27E293;
-    color: #e6e7e8;
+    background-color: #ccffb8;
+    color: #01b118;
     font-size: 15px;
+
 }
 
 .result-table thead th {
     position: sticky;
-    background-color: #27E293;
-    color: #e6e7e8;
+    background-color: #ccffb8;
+    color: #01b118;
     font-size: 15px;
+
 }
 
 th,
@@ -58,6 +60,6 @@ tr:nth-child(odd) {
 }
 
 caption {
-    font-family: "Segoe UI";
+    font-family: "Rubik", sans-serif;
     padding: 10px;  
   }

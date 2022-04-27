@@ -14,7 +14,7 @@ body {
   font-weight: 400;
   line-height: 1.5;
   text-align: left;
-  background-color: #ffffff;
+  background-color: white;
  }
 
 ul {
@@ -42,15 +42,23 @@ img {
 }
 
 #recherche {
- width: 100%;
- padding-right: 20px;
- padding-left: 20px;
-width: 38%;
-margin: auto;
+  z-index: 1;
+  width: 50%;
+  align-items: center;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin: auto;
+  margin-top: auto;
+  
+  
 }
 
+
 #carte {
-  margin: 0 auto;
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin: auto;
 }
 
 .table-row {
@@ -89,14 +97,14 @@ margin: auto;
  padding: 0.5rem 1rem;
   
   
- /* couleur des link */ 
- color: white;
+ /* couleur des link  */
+ color:#1d6600;
 }
 
  /* surligner des link quand on les survole */
  .nav-link:hover, .nav-link:focus{
    text-decoration: underline;
-   text-decoration-color: white;
+   text-decoration-color: #ff7300;
    text-underline-position: under;
    text-decoration-style: solid;
    
@@ -127,7 +135,7 @@ margin: auto;
   
   
 /* couleur du titre de la page*/
-color: white;
+color: #1d6600;
 }
 
 .navbar-nav {
@@ -149,12 +157,12 @@ color: white;
  padding: 0.25rem 0.75rem;
  font-size: 1.25rem;
  line-height: 1;
- background-color: #27E293;
+ background-color: #ccffb8;
  border: 1px solid white;
  border-radius: 0.25rem;
   
  /* couleur des bordure de l'icone */
-  border-color: white;
+  border-color: #1d6600;
 }
 
 /* propri de l'icone */ 
@@ -203,20 +211,20 @@ button:not(:disabled){
 
 /* couleur des link quand on les survole */
 .nav-link:hover{
-  color: rgba(255, 255, 255, 0.75);
+  color: #ff7300;
  }
 
  /* couleur de link active pour la démarquer des autres*/
 .active > .nav-link
- {
- color: #ff7300;
-}
+  {
+  color: #ff7300;
+ }
 
 
 
 /* couleur de la barre de la barre de menu*/ 
 .bg-dark {
-  background-color: #27E293 ;
+  background-color: #ccffb8;
  }
 
  /* box se connecter et s'inscrire*/
@@ -252,8 +260,8 @@ input[type=text], input[type=password], input[type=email] {
 }
 
 input[type=submit] {
-  background-color: #27E293;
-  color: white;
+  background-color: #ccffb8;
+  color: #1d6600;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
@@ -264,9 +272,9 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-  background-color: white;
-  color: #27E293;
-  border: 1px solid #27E293;
+  background-color:#1d6600;
+  color: #ccffb8;
+  border: 1px solid #ccffb8;
 }
 
 input[type=checkbox] {
@@ -282,6 +290,39 @@ input[type=checkbox] {
 }
 
 input[type=checkbox]:checked {
-    border-color: #27E293;
-    background: #27E293;
+    border-color: #1d6600;
+    background: #1d6600;
+}
+
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  /*display: inline-block;*/
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #ffffff;
+  border-bottom: 1px solid #d4d4d4;
+}
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9;
+}
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: #27E293 !important;
+  color: #ffffff;
 }

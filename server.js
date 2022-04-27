@@ -31,6 +31,7 @@ const res = require("express/lib/response");
 // application
 const app = express();
 app.use(cors());
+
 // l'application utilise body-parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -72,9 +73,6 @@ res.setHeader(
 next();
 });
 
-//tranformer le body en json utilisable
-app.use(bodyParser.json());
-
 //la route d'authentification
 app.use("/", userRoutes);
 // app.use("/", carbuRoutes);
@@ -106,28 +104,42 @@ app.get("/contacts", function (req, res) {
 
 // post request index.hbs
 app.post("/index", function (req, res) {
+  var list_carburant = [];
+  // types de carburant
   var string_properties = '{"' + 'title' + '"' + ': ' + '"' + 'Trouve Ton Essence' + '", ';
   if (req.body.Gazole) {
     string_properties += '"' + 'Gazole' + '"' + ': ' + '"' + 'true' + '", ';
+    list_carburant.push("Gazole");
   }
   if (req.body.SP95) {
     string_properties += '"' + 'SP95' + '"' + ': ' + '"' + 'true' + '", ';
+    list_carburant.push("SP95");
   }
   if (req.body.SP98) {
     string_properties += '"' + 'SP98' + '"' + ': ' + '"' + 'true' + '", ';
+    list_carburant.push("SP98");
   }
   if (req.body.E85) {
     string_properties += '"' + 'E85' + '"' + ': ' + '"' + 'true' + '", ';
+    list_carburant.push("E85");
   }
   if (req.body.E10) {
     string_properties += '"' + 'E10' + '"' + ': ' + '"' + 'true' + '", ';
+    list_carburant.push("E10");
   }
-  if (req.body.GPL) {
-    string_properties += '"' + 'GPL' + '"' + ': ' + '"' + 'true' + '", ';
+  if (req.body.GPLc) {
+    string_properties += '"' + 'GPLc' + '"' + ': ' + '"' + 'true' + '", ';
+    list_carburant.push("GPLc");
   }
-  var good_string = string_properties.slice(0, -2) + '}';
+  var good_string = string_properties.slice(0, -2);
   console.log(good_string);
-  res.render("index", JSON.parse(good_string));
+  // data du departement concerne
+  const chooseData = require('./server/carbu/chooseCarbu');
+  var result = chooseData.assemblyData('departement', req.body["departement-recherche"], list_carburant);
+  var newresult = ', ' + '"' + 'address' + '"' + ': ' +JSON.stringify(result)  + '}';
+  console.log(good_string + newresult);
+  
+  res.render("index", JSON.parse(good_string + newresult));
 });
 
 // Set port of app
@@ -166,13 +178,6 @@ const getData = async () => {
   fs.writeFileSync("data.json", FinalJSON);
   console.log('fichier data.json ecrit');
 };
-//getData();
-
-const readData = require('./server/carbu/processCarbuData');
-// readData.getDataJson('ville','Paris');
-readData.getDataJson('departement', 'VAL D\'OISE');
-console.log(readData.getGpsCoordinates()[0]);
-console.log(readData.getAddress()[0]);
-console.log(readData.getCarburant()[0]);
+// getData();
 
 console.log("fin du serveur");

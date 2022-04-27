@@ -8,12 +8,12 @@ var data;
  * Obtient les données liées à la recherche de l'utilisateur et prépare l'organisation
  * des données qui seront transmisent à l'utilisateur.
  */
-exports.getDataJson = function (mode, ...args) {
+exports.getDataJson = function (mode, lieu, carburant) {
   if(mode == 'ville'){
-    data = readJson.searchDataCity(args[0]);
+    data = readJson.searchDataCity(lieu, carburant);
   }
   else if(mode == 'departement'){
-    data = readJson.searchDataDepartment(args[0]);
+    data = readJson.searchDataDepartment(lieu, carburant);
   }
   else{
     console.log("Le mode de recherche indiqué n\'est pas connu, veuillez indiqué 'ville' ou 'departement' ");
