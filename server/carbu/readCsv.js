@@ -1,7 +1,7 @@
 const fs = require("fs");
 const csv = require('csv-parse');
 
-const DEP_CODE_NUMBER = 99
+const DEP_CODE_NUMBER = 95
 
 
 /**
