@@ -7,6 +7,7 @@ const cryptojs = require("crypto-js");
 //importation models de la base de donnée User.js
 const User = require("../models/signup.js");
 
+
 console.log(User);
 
 //signup pour enregistrer le nouvel utilisateur dans la bd
@@ -19,7 +20,7 @@ console.log("password");
 console.log(req.body.password);
 
 // chiffrer l'email avant de l'envoyer dans la bdd
-const emailCryptoJs = cryptojs.HmacSHA256(req.body.email,"CLE_SECRET").toString();
+const emailCryptoJs = cryptojs.HmacSHA256(req.body.email,`${process.env.CRYPTOJS_EMAIL}`).toString();
 
 // hasher le mdp avant de l'envoyer dans la bdd 
 bcrypt
@@ -55,7 +56,7 @@ exports.login =(req, res, next) => {
     // chiffrer l'email de la requete
 
     const emailCryptoJs = cryptojs.
-    HmacSHA256(req.body.email,"CLE_SECRET")
+    HmacSHA256(req.body.email,`${process.env.CRYPTOJS_EMAIL}`)
     .toString();
     console.log("Email");
     console.log(emailCryptoJs);
@@ -85,4 +86,7 @@ exports.login =(req, res, next) => {
         .catch((error) => res.status(500).json({error}))
     })
     .catch((error)=> res.status(500).json({error}));
+    
+    
+
 };
