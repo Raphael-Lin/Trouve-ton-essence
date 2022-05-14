@@ -19,7 +19,7 @@
     </div>
       <div id="recherche">
         <form action="/index" method="post" id="search_form"  autocomplete="off">
-          <div class="row">
+          <div class="form-row">
             <ul style="list-style: none;">
               <li>
                 <label class="input_label">Gazole</label>
@@ -47,11 +47,39 @@
               </li>
             </ul>
           </div>
-          <div class="row">
-            <div class="">
-              <label class="input_label" for="ville-recherche">Ville</label>
-              <div class="autocomplete">
-                <input type="text" id="input-ville" name="ville-recherche" placeholder="Ville à rechercher..."/>
+          <div class="form-row">
+            <div style="margin-bottom: 5px;">
+              <label class="input_label" style="margin-right: 5px;">Recherche par</label>
+              <input type="radio" id="radio_dep" name="radio" value="departement" onclick = "replace_dep()" checked>
+              <label for="radio_dep" style="margin-right: 5px;">Département</label>
+              <input type="radio" id="radio_ville" name="radio" onclick = "replace_ville()" value="ville">
+              <label for="radio_ville">Ville</label>
+              <script type = "text/javascript">
+                function replace_dep() {
+                document.getElementById("search_mode_1").style.display="block";
+                document.getElementById("search_mode_2").style.display="none";
+                }
+                function replace_ville() {
+                document.getElementById("search_mode_1").style.display="none";
+                document.getElementById("search_mode_2").style.display="block";
+                }
+              </script>
+            </div>
+              <div id="search_mode_1" style="display:block">
+                <label class="input_label" for="departement-recherche">Département</label>
+                <div class="autocomplete">
+                  <input id="input-departement" type="text" name="departement-recherche" placeholder="Département à rechercher...">
+                </div>
+              </div>
+              <script type="text/javascript" src="/script/autocomplete.js"></script>
+              <script>
+                autocomplete(document.getElementById("input-departement"), departements);
+              </script>
+              <div id="search_mode_2" style="display:none">
+                <label class="input_label" for="ville-recherche">Ville</label>
+                <div class="autocomplete">
+                  <input type="text" id="input-ville" name="ville-recherche" placeholder="Ville à rechercher..."/>
+                </div>
               </div>
 <!--               <script type="text/javascript" src="/script/autocomplete.js"></script>
               <script>
@@ -60,19 +88,8 @@
                 console.log("utilise le script d'auto complétion");
                 console.log(villes);
                 autocomplete(document.getElementById("input-ville"), villes);
-              </script> -->
-              
-              
-                <label class="input_label" for="departement-recherche">Département</label>
-                <div class="autocomplete">
-                  <input id="input-departement" type="text" name="departement-recherche" placeholder="Département à rechercher...">
-                </div>
-                <script type="text/javascript" src="/script/autocomplete.js"></script>
-                <script>
-                  autocomplete(document.getElementById("input-departement"), departements);
-                </script>
+              </script> -->             
               <input class="fuel_choice" type="submit" value="Rechercher"/>
-            </div>
           </div>
         </form>
       </div>

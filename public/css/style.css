@@ -312,7 +312,24 @@ input[type=checkbox] {
   transition: background 175ms cubic-bezier(0.1, 0.1, 0.25, 1);
 }
 
+input[type=radio] {
+  position: relative;
+  width: 1em;
+  height: 1em;
+  border: 1px solid #cccccc;
+  border-radius: 50px;
+  appearance: none;
+  outline: 0;
+  cursor: pointer;
+  transition: background 175ms cubic-bezier(0.1, 0.1, 0.25, 1);
+}
+
 input[type=checkbox]:checked {
+    border-color: rgb(49, 176, 92);
+    background: rgb(49, 176, 92);
+}
+
+input[type=radio]:checked {
     border-color: rgb(49, 176, 92);
     background: rgb(49, 176, 92);
 }
@@ -348,4 +365,9 @@ input[type=checkbox]:checked {
   /*when navigating through the items using the arrow keys:*/
   background-color: #27E293 !important;
   color: #ffffff;
+}
+
+.form-row {
+ margin-right: -15px;
+ margin-left: -15px;
 }
