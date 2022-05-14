@@ -1,77 +1,76 @@
 <html lang="en">
   <body>
     <div id="elements">
-      <div id="carte">
-        <iframe
+    <div id="carte">
+       <!-- <iframe id="myIFrame"
           src="https://maps.google.com/maps?q=versailles&t=&z=13&ie=UTF8&iwloc=&output=embed"
+          referrerpolicy="no-referrer-when-downgrade"
           width="100%"
           height="500"
           style="border:0;"
           allowfullscreen=""
           loading="lazy"
-        ></iframe>
-      </div>
+        ></iframe> -->
+        <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZSA-7PEiaq8X_zc3402GlJJ5BhoEpayE&callback=initMap"
+        defer
+      ></script>
+      <script type="text/javascript" src="/script/googlemaps.js"></script>
+    </div>
       <div id="recherche">
         <form action="/index" method="post" id="search_form"  autocomplete="off">
           <div class="row">
             <ul style="list-style: none;">
               <li>
                 <label class="input_label">Gazole</label>
-                <input class="fuel_choice" type="checkbox" name="Gazole" />
+                <input class="fuel_choice" type="checkbox" name="Gazole" {{#if Gazole}}checked{{/if}}/>
               </li>
               <li>
                 <label class="input_label">SP95</label>
-                <input class="fuel_choice" type="checkbox" name="SP95" />
+                <input class="fuel_choice" type="checkbox" name="SP95" {{#if SP95}}checked{{/if}}/>
               </li>
               <li>
                 <label class="input_label">SP98</label>
-                <input class="fuel_choice" type="checkbox" name="SP98" />
+                <input class="fuel_choice" type="checkbox" name="SP98" {{#if SP98}}checked{{/if}}/>
               </li>
               <li>
                 <label class="input_label">E85</label>
-                <input class="fuel_choice" type="checkbox" name="E85" />
+                <input class="fuel_choice" type="checkbox" name="E85" {{#if E85}}checked{{/if}}/>
               </li>
               <li>
                 <label class="input_label">E10</label>
-                <input class="fuel_choice" type="checkbox" name="E10" />
+                <input class="fuel_choice" type="checkbox" name="E10" {{#if E10}}checked{{/if}}/>
               </li>
               <li>
                 <label class="input_label">GPLc</label>
-                <input class="fuel_choice" type="checkbox" name="GPLc" />
+                <input class="fuel_choice" type="checkbox" name="GPLc" {{#if GPL}}checked{{/if}}/>
               </li>
             </ul>
           </div>
           <div class="row">
             <div class="">
               <label class="input_label" for="ville-recherche">Ville</label>
-              <div id="ville-recherche-groupe">
-                <input
-                  type="text"
-                  class="ville-search"
-                  id="ville-recherche"
-                  name="ville-recherche"
-                  placeholder="Ville à rechercher..."
-                />
-                <datalist
-                  class="ville-recherche-datalist"
-                  id="ville-recherche-results"
-                >
-                </datalist>
+              <div class="autocomplete">
+                <input type="text" id="input-ville" name="ville-recherche" placeholder="Ville à rechercher..."/>
               </div>
-              <div class="">
-                <label
-                  class="input_label"
-                  for="departement-recherche"
-                >Département</label>
+<!--               <script type="text/javascript" src="/script/autocomplete.js"></script>
+              <script>
+                var JsonVille = fs.readFileSync("ville.json");
+                var villes = JSON.parse(JsonVille);
+                console.log("utilise le script d'auto complétion");
+                console.log(villes);
+                autocomplete(document.getElementById("input-ville"), villes);
+              </script> -->
+              
+              
+                <label class="input_label" for="departement-recherche">Département</label>
                 <div class="autocomplete">
-                <input id="input-departement" type="text" name="departement-recherche" placeholder="Département à rechercher...">
+                  <input id="input-departement" type="text" name="departement-recherche" placeholder="Département à rechercher...">
                 </div>
-                <script type="text/javascript" src="/script/autocomplete.js">
-                  </script>
+                <script type="text/javascript" src="/script/autocomplete.js"></script>
                 <script>
                   autocomplete(document.getElementById("input-departement"), departements);
                 </script>
-              </div>
               <input class="fuel_choice" type="submit" value="Rechercher"/>
             </div>
           </div>
@@ -84,7 +83,7 @@
         <thead>
           <tr>
             <th>
-              Stations
+              Stations{{#if Departement}} ({{Departement}}){{/if}}
             </th>
             {{#if Gazole}}
               <th>
@@ -133,8 +132,19 @@
                     {{[1].[2]}}
                 </div>
                 <div>
-                  <input type="button" value="Ajouter aux favoris" />
-                  <input type="button" value="Emplacement sur la carte" />
+                  <input type="button" class ="buttonlist" value="Ajouter aux favoris" />
+                  <input type="button" class ="buttonlist" value="Emplacement sur la carte" onclick="getEmplacement({{[0].[0]}},{{[0].[1]}})"/>
+                  <script> window.addEventListener('load', function() {
+                            var tab = [];
+                            {{#if ../Gazole}} tab.push("Gazole: " + "{{[2].Gazole}}"); {{/if}}
+                            {{#if ../SP98}} tab.push("SP98: " + "{{[2].SP98}}"); {{/if}}
+                            {{#if ../SP95}} tab.push("SP95: " + "{{[2].SP95}}"); {{/if}}
+                            {{#if ../E85}} tab.push("E85: " + "{{[2].E85}}"); {{/if}}
+                            {{#if ../E10}} tab.push("E10: " + "{{[2].E10}}"); {{/if}}                           
+                            {{#if ../GPLc}} tab.push("Gazole: " + "{{[2].GPLc}}"); {{/if}}
+                            setMarker({{[0].[0]}},{{[0].[1]}},"{{[1].[0]}}",{{[1].[1]}},"{{[1].[2]}}",tab);
+                          });
+                  </script>
                 </div>
               </div>
             </td>

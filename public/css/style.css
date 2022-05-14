@@ -14,7 +14,7 @@ body {
   font-weight: 400;
   line-height: 1.5;
   text-align: left;
-  background-color: white;
+  background-color: #ffffff;
  }
 
 ul {
@@ -56,13 +56,14 @@ img {
 
 #carte {
   position: relative;
-  width: 100%;
-  height: auto;
+  width: 200%;
+  height: 500px;
   margin: auto;
 }
 
 .table-row {
   display: flex;
+  gap: 20px;
 }
 
 .container {
@@ -98,12 +99,12 @@ img {
   
   
  /* couleur des link  */
- color:#1d6600;
+ color: rgba(255, 255, 255, 0.7);
 }
 
  /* surligner des link quand on les survole */
  .nav-link:hover, .nav-link:focus{
-   text-decoration: underline;
+   text-decoration: none;
    text-decoration-color: #ff7300;
    text-underline-position: under;
    text-decoration-style: solid;
@@ -135,7 +136,7 @@ img {
   
   
 /* couleur du titre de la page*/
-color: #1d6600;
+color: #ffffff;
 }
 
 .navbar-nav {
@@ -157,12 +158,12 @@ color: #1d6600;
  padding: 0.25rem 0.75rem;
  font-size: 1.25rem;
  line-height: 1;
- background-color: #ccffb8;
- border: 1px solid white;
+ background-color: transparent;
+ border: 1px solid transparent;
  border-radius: 0.25rem;
   
  /* couleur des bordure de l'icone */
-  border-color: #1d6600;
+  border-color: rgba(255, 255, 255, 0.501);
 }
 
 /* propri de l'icone */ 
@@ -174,6 +175,26 @@ color: #1d6600;
   
  /* l'icone */
   background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.buttonlist {
+  background-color: rgb(49, 176, 92);
+  color: white;
+  padding: 10px 0;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 70%;
+  border-radius:60px;
+  font-family: "Rubik", sans-serif;
+  transition: all 500ms;
+}
+
+.buttonlist:hover {
+  background-color: white;
+  color: rgb(49, 176, 92);
+  border: 1px solid rgb(49, 176, 92);
+  transition: all 200ms;
 }
 
 /* on change le curseur quand on va sur le bouton*/
@@ -191,7 +212,7 @@ button:not(:disabled){
 
  /* borne inférieur de la taille de la page, on affiche le menu tel qu'il est 
     pas besoin du bouton/icone de menu*/ 
- @media (min-width: 860px) {
+ @media (min-width: 800px) {
 
   .navbar-nav {
     flex-direction: row;
@@ -211,20 +232,20 @@ button:not(:disabled){
 
 /* couleur des link quand on les survole */
 .nav-link:hover{
-  color: #ff7300;
+  color: rgba(255, 255, 255, 255);
  }
 
  /* couleur de link active pour la démarquer des autres*/
 .active > .nav-link
   {
-  color: #ff7300;
+  color: #ffffff;
  }
 
 
 
 /* couleur de la barre de la barre de menu*/ 
 .bg-dark {
-  background-color: #ccffb8;
+  background-color: rgb(49, 176, 92);
  }
 
  /* box se connecter et s'inscrire*/
@@ -260,8 +281,8 @@ input[type=text], input[type=password], input[type=email] {
 }
 
 input[type=submit] {
-  background-color: #ccffb8;
-  color: #1d6600;
+  background-color: rgb(49, 176, 92);
+  color: white;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
@@ -269,12 +290,14 @@ input[type=submit] {
   width: 100%;
   border-radius:60px;
   font-family: "Rubik", sans-serif;
+  transition: all 600ms;
 }
 
 input[type=submit]:hover {
-  background-color:#1d6600;
-  color: #ccffb8;
-  border: 1px solid #ccffb8;
+  background-color: white;
+  color: rgb(49, 176, 92);
+  border: 1px solid rgb(49, 176, 92);
+  transition: all 200ms;
 }
 
 input[type=checkbox] {
@@ -290,8 +313,8 @@ input[type=checkbox] {
 }
 
 input[type=checkbox]:checked {
-    border-color: #1d6600;
-    background: #1d6600;
+    border-color: rgb(49, 176, 92);
+    background: rgb(49, 176, 92);
 }
 
 .autocomplete {

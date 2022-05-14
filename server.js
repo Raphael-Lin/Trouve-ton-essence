@@ -79,34 +79,34 @@ app.use("/", userRoutes);
 
 // Startup page for the server
 app.get("/", function (req, res) {
-  res.render("index", { title: "Trouve Ton Essence" });
+  res.render("index", {Departement: ""});
 });
 
 // get index.hbs
 app.get("/index", function (req, res) {
-  res.render("index", { title: "Trouve Ton Essence" });
+  res.render("index", {Departement: ""});
 });
 
 // get login.hbs
 app.get("/login", function (req, res) {
-  res.render("login", { title: "Trouve Ton Essence" });
+  res.render("login", {Departement: ""});
 });
 
 // get register.hbs
 app.get("/register", function (req, res) {
-  res.render("register", { title: "Trouve Ton Essence"});
+  res.render("register", {Departement: ""});
 });
 
 // get contacts.hbs
 app.get("/contacts", function (req, res) {
-  res.render("contacts", { title: "Trouve Ton Essence" });
+  res.render("contacts", {Departement: ""});
 });
 
 // post request index.hbs
 app.post("/index", function (req, res) {
   var list_carburant = [];
   // types de carburant
-  var string_properties = '{"' + 'title' + '"' + ': ' + '"' + 'Trouve Ton Essence' + '", ';
+  var string_properties = '{"' + 'Departement' + '"' + ': ' + '"' + req.body["departement-recherche"] + '", ';
   if (req.body.Gazole) {
     string_properties += '"' + 'Gazole' + '"' + ': ' + '"' + 'true' + '", ';
     list_carburant.push("Gazole");
@@ -179,5 +179,22 @@ const getData = async () => {
   console.log('fichier data.json ecrit');
 };
 // getData();
+
+
+// let JsonData = fs.readFileSync("data.json");
+// let JSONData = JSON.parse(JsonData);
+// var villeJson = [];
+// for(let i = 0; i < JSONData.pdv_liste.pdv.length; i++){
+//   if((JSONData.pdv_liste.pdv[i] != undefined)){
+//     let ville = JSONData.pdv_liste.pdv[i].ville._text;
+//     if(!villeJson.includes(ville)){
+//       villeJson.push(ville.toUpperCase());
+//     }
+//   }
+// }
+// console.log('ecriture de data.json...');
+// fs.writeFileSync("ville.json", villeJson);
+// console.log('fichier data.json ecrit');
+
 
 console.log("fin du serveur");

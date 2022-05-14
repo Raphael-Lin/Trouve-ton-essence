@@ -128,6 +128,9 @@ function autocomplete(inp, arr) {
               b.addEventListener("click", function(e) {
               /*insert the value for the autocomplete text field:*/
               inp.value = this.getElementsByTagName("input")[0].value;
+              if (inp.value == "VAL D") inp.value = "VAL D'OISE";
+              if (inp.value == "COTE D") inp.value = "COTE D'OR";
+              if (inp.value == "COTES D") inp.value = "COTES D'ARMOR";
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists();

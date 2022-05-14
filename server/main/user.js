@@ -23,9 +23,10 @@ console.log(req.body.password);
 const emailCryptoJs = cryptojs.HmacSHA256(req.body.email,`${process.env.CRYPTOJS_EMAIL}`).toString();
 
 // hasher le mdp avant de l'envoyer dans la bdd 
-bcrypt
-.hash(req.body.password, 10)// 10 = combien de fois sera executé l'algo de hashage sur le mdp
-.then((hash) => {
+  
+const saltRounds = 10;
+bcrypt.genSalt(saltRounds, function(err, salt){
+bcrypt.hash(req.body.password, salt, function(err, hash){
     // ce qui va etre enregistré dans mongoDB
     const user = new User({
         email : emailCryptoJs,
@@ -39,9 +40,10 @@ bcrypt
     .save()
     .then(() => res.status(201).json({ status: "ok", message : "Utilisateur créé et sauvegardé"}))
     .catch((error) => res.status(500).json({error : error}));
-})
+});
 
-.catch((error) => res.status(500).json({error : error}));
+});
+
 };
 
 // login pour s'authentifier 
