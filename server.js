@@ -49,6 +49,11 @@ app.engine("hbs", hbs.engine);
 app.set("views", path.join(__dirname, "/public/views/"));
 app.set("view engine", "hbs");
 
+// hbs helper to compare two values
+hbs.handlebars.registerHelper('check_name', function(val1, val2) {
+  return val1 === val2;
+});
+
 // Set paths to static files
 app.use(express.static(__dirname + "/public"));
 app.use(express.static(__dirname + "/server"));
@@ -79,67 +84,104 @@ app.use("/", userRoutes);
 
 // Startup page for the server
 app.get("/", function (req, res) {
-  res.render("index", {Departement: ""});
+  res.render("index", {Departement: "", Ville: ""});
 });
 
 // get index.hbs
 app.get("/index", function (req, res) {
-  res.render("index", {Departement: ""});
+  res.render("index", {Departement: "", Ville: ""});
 });
 
 // get login.hbs
 app.get("/login", function (req, res) {
-  res.render("login", {Departement: ""});
+  res.render("login", {Departement: "", Ville: ""});
 });
 
 // get register.hbs
 app.get("/register", function (req, res) {
-  res.render("register", {Departement: ""});
+  res.render("register", {Departement: "", Ville: ""});
 });
 
 // get contacts.hbs
 app.get("/contacts", function (req, res) {
-  res.render("contacts", {Departement: ""});
+  res.render("contacts", {Departement: "", Ville: ""});
 });
 
+// variables utiles pour les requetes post
+var string_properties;
+var result_assemblyData;
+const chooseData = require('./server/carbu/chooseCarbu');
 // post request index.hbs
 app.post("/index", function (req, res) {
   var list_carburant = [];
   // types de carburant
-  var string_properties = '{"' + 'Departement' + '"' + ': ' + '"' + req.body["departement-recherche"] + '", ';
+  string_properties = '{"' + 'Departement' + '"' + ': ' + '"' + req.body["departement-recherche"] + '", ' + '"' + 'Ville' + '"' + ': ' + '"' + req.body["ville-recherche"] + '", ';
+  var temp_value = 1;
   if (req.body.Gazole) {
+    string_properties += '"e' + temp_value + '"' + ': ' + '"' + 'Gazole' + '", ';
+    temp_value++;
     string_properties += '"' + 'Gazole' + '"' + ': ' + '"' + 'true' + '", ';
     list_carburant.push("Gazole");
   }
-  if (req.body.SP95) {
-    string_properties += '"' + 'SP95' + '"' + ': ' + '"' + 'true' + '", ';
-    list_carburant.push("SP95");
-  }
   if (req.body.SP98) {
+    string_properties += '"e' + temp_value + '"' + ': ' + '"' + 'SP98' + '", ';
+    temp_value++;
     string_properties += '"' + 'SP98' + '"' + ': ' + '"' + 'true' + '", ';
     list_carburant.push("SP98");
   }
+  if (req.body.SP95) {
+    string_properties += '"e' + temp_value + '"' + ': ' + '"' + 'SP95' + '", ';
+    temp_value++;
+    string_properties += '"' + 'SP95' + '"' + ': ' + '"' + 'true' + '", ';
+    list_carburant.push("SP95");
+  }
   if (req.body.E85) {
+    string_properties += '"e' + temp_value + '"' + ': ' + '"' + 'E85' + '", ';
+    temp_value++;
     string_properties += '"' + 'E85' + '"' + ': ' + '"' + 'true' + '", ';
     list_carburant.push("E85");
   }
   if (req.body.E10) {
+    string_properties += '"e' + temp_value + '"' + ': ' + '"' + 'E10' + '", ';
+    temp_value++;
     string_properties += '"' + 'E10' + '"' + ': ' + '"' + 'true' + '", ';
     list_carburant.push("E10");
   }
   if (req.body.GPLc) {
+    string_properties += '"e' + temp_value + '"' + ': ' + '"' + 'GPLc' + '", ';
+    temp_value++;
     string_properties += '"' + 'GPLc' + '"' + ': ' + '"' + 'true' + '", ';
     list_carburant.push("GPLc");
   }
-  var good_string = string_properties.slice(0, -2);
-  console.log(good_string);
+  // var good_string = string_properties.slice(0, -2);
+  console.log(string_properties);
   // data du departement concerne
-  const chooseData = require('./server/carbu/chooseCarbu');
-  var result = chooseData.assemblyData('departement', req.body["departement-recherche"], list_carburant);
-  var newresult = ', ' + '"' + 'address' + '"' + ': ' +JSON.stringify(result)  + '}';
-  console.log(good_string + newresult);
+  if (req.body.radiod) {
+    console.log("r département");
+    result_assemblyData = chooseData.assemblyData('departement', req.body["departement-recherche"], list_carburant);
+  }
+  if (req.body.radiov) {
+    console.log("r ville");
+    result_assemblyData = chooseData.assemblyData('ville', req.body["ville-recherche"], list_carburant);
+  }
+  // tri des data par le premier type d'essence du tableau
+  chooseData.sortResult(result_assemblyData, list_carburant[0]);
+  var newresult = '"' + 'address' + '"' + ': ' + JSON.stringify(result_assemblyData) + '}';
+  // console.log(string_properties + newresult);
   
-  res.render("index", JSON.parse(good_string + newresult));
+  res.render("index", JSON.parse(string_properties + newresult));
+});
+
+
+// post request indexTri (render index.hbs trié)
+app.post("/indexTri", function (req, res) {
+  // remplace e1 par le carburant choisit
+  var e1Pos = string_properties.indexOf("e1");
+  string_properties = string_properties.substring(0, e1Pos + 6) + req.body.essence + string_properties.substring(string_properties.indexOf('"', e1Pos + 6), string_properties.length);
+  // tri en fonction du carburant demandé
+  chooseData.sortResult(result_assemblyData, req.body.essence);
+  var newresult = '"' + 'address' + '"' + ': ' + JSON.stringify(result_assemblyData) + '}';
+  res.render("index", JSON.parse(string_properties + newresult));
 });
 
 // Set port of app
@@ -178,8 +220,7 @@ const getData = async () => {
   fs.writeFileSync("data.json", FinalJSON);
   console.log('fichier data.json ecrit');
 };
-// getData();
-
+getData();
 
 // let JsonData = fs.readFileSync("data.json");
 // let JSONData = JSON.parse(JsonData);
@@ -195,6 +236,5 @@ const getData = async () => {
 // console.log('ecriture de data.json...');
 // fs.writeFileSync("ville.json", villeJson);
 // console.log('fichier data.json ecrit');
-
 
 console.log("fin du serveur");

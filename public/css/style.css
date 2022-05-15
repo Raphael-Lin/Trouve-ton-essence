@@ -1,37 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
 
 *,
 *::before,
 *::after {
- box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-
 body {
-  width:100%;
+  width: 100%;
   margin: 0;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   line-height: 1.5;
   text-align: left;
   background-color: #ffffff;
- }
-
-ul {
- margin-top: 0;
- margin-bottom: 1rem;
 }
 
+ul {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
 
 a {
- color: #01b118;
- text-decoration: none;
- background-color: transparent;
+  color: #01b118;
+  text-decoration: none;
+  background-color: transparent;
 }
 
 img {
- vertical-align: middle;
- border-style: none;
+  vertical-align: middle;
+  border-style: none;
 }
 
 #elements {
@@ -49,10 +47,7 @@ img {
   padding-left: 20px;
   margin: auto;
   margin-top: auto;
-  
-  
 }
-
 
 #carte {
   position: relative;
@@ -67,113 +62,106 @@ img {
 }
 
 .container {
- width: 100%;
- padding-right: 15px;
- padding-left: 15px;
- margin-right: auto;
- margin-left: auto;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .row {
- display: flex;
- margin-right: -15px;
- margin-left: -15px;
+  display: flex;
+  margin-right: -15px;
+  margin-left: -15px;
 }
 
-.col{
- position: relative;
- width: 100%;
- padding-right: 15px;
- padding-left: 15px;
+.col {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
-/* pour ne pas afficher le menu directement avec l'icone*/ 
+/* pour ne pas afficher le menu directement avec l'icone*/
 .collapse:not(.show) {
- display: none;
+  display: none;
 }
-
 
 .nav-link {
- display: block;
- padding: 0.5rem 1rem;
-  
-  
- /* couleur des link  */
- color: rgba(255, 255, 255, 0.7);
+  display: block;
+  padding: 0.5rem 1rem;
+
+  /* couleur des link  */
+  color: rgba(255, 255, 255, 0.7);
 }
 
- /* surligner des link quand on les survole */
- .nav-link:hover, .nav-link:focus{
-   text-decoration: none;
-   text-decoration-color: #ff7300;
-   text-underline-position: under;
-   text-decoration-style: solid;
-   
-  }
+/* surligner des link quand on les survole */
+.nav-link:hover,
+.nav-link:focus {
+  text-decoration: none;
+  text-decoration-color: #ff7300;
+  text-underline-position: under;
+  text-decoration-style: solid;
+}
 
-/* alignement des link a droite */ 
-.ml-auto{
+/* alignement des link a droite */
+.ml-auto {
   margin-left: auto !important;
- }
- 
+}
 
 .navbar {
- position: relative;
- display: flex;
- flex-wrap: wrap;
- align-items: center;
- justify-content: space-between;
- padding: 0.5rem 1rem;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
 }
 
-
 .navbar-brand {
- display: inline-block;
- padding-top: 0.3125rem;
- padding-bottom: 0.3125rem;
- margin-right: 1rem;
- font-size: 1.75rem;
-  
-  
-/* couleur du titre de la page*/
-color: #ffffff;
+  display: inline-block;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  margin-right: 1rem;
+  font-size: 1.75rem;
+
+  /* couleur du titre de la page*/
+  color: #ffffff;
 }
 
 .navbar-nav {
- display: flex;
- flex-direction: column;
- padding-left: 0;
- margin-bottom: 0;
- list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
 }
-
 
 .navbar-collapse {
- flex-basis: 100%;
- flex-grow: 1;
+  flex-basis: 100%;
+  flex-grow: 1;
 }
 
-/* menu reduit (une fois la page retrecie) */ 
+/* menu reduit (une fois la page retrecie) */
 .navbar-toggler {
- padding: 0.25rem 0.75rem;
- font-size: 1.25rem;
- line-height: 1;
- background-color: transparent;
- border: 1px solid transparent;
- border-radius: 0.25rem;
-  
- /* couleur des bordure de l'icone */
+  padding: 0.25rem 0.75rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+
+  /* couleur des bordure de l'icone */
   border-color: rgba(255, 255, 255, 0.501);
 }
 
-/* propri de l'icone */ 
+/* propri de l'icone */
 .navbar-toggler-icon {
- display: inline-block;
- width: 1.5em;
- height: 1.5em;
-  
-  
- /* l'icone */
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+
+  /* l'icone */
   background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
@@ -184,8 +172,8 @@ color: #ffffff;
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 70%;
-  border-radius:60px;
+  width: 120%;
+  border-radius: 60px;
   font-family: "Rubik", sans-serif;
   transition: all 500ms;
 }
@@ -198,89 +186,84 @@ color: #ffffff;
 }
 
 /* on change le curseur quand on va sur le bouton*/
-button:not(:disabled){
+button:not(:disabled) {
   cursor: pointer;
- }
+}
 
-/* changement quand on clique sur le bouton*/ 
- button:focus {
+/* changement quand on clique sur le bouton*/
+button:focus {
   outline: 1px dotted;
   outline: white solid 1px;
- }
+}
 
-
-
- /* borne inférieur de la taille de la page, on affiche le menu tel qu'il est 
-    pas besoin du bouton/icone de menu*/ 
- @media (min-width: 800px) {
-
+/* borne inférieur de la taille de la page, on affiche le menu tel qu'il est 
+    pas besoin du bouton/icone de menu*/
+@media (min-width: 800px) {
   .navbar-nav {
     flex-direction: row;
   }
-  
+
   .navbar-collapse {
     display: flex !important;
     flex-basis: auto;
   }
 
-  /* ne pas afficher le bouton */ 
+  /* ne pas afficher le bouton */
   .navbar-toggler {
     display: none !important;
   }
- }
-
+}
 
 /* couleur des link quand on les survole */
-.nav-link:hover{
+.nav-link:hover {
   color: rgba(255, 255, 255, 255);
- }
+}
 
- /* couleur de link active pour la démarquer des autres*/
-.active > .nav-link
-  {
+/* couleur de link active pour la démarquer des autres*/
+.active > .nav-link {
   color: #ffffff;
- }
+}
 
-
-
-/* couleur de la barre de la barre de menu*/ 
+/* couleur de la barre de la barre de menu*/
 .bg-dark {
   background-color: rgb(49, 176, 92);
- }
+}
 
- /* box se connecter et s'inscrire*/
- #container{
-  width:400px;
-  margin:0 auto;
-  margin-top:5%;
+/* box se connecter et s'inscrire*/
+#container {
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 5%;
 }
 
 /* box se connecter et s'inscrire */
- form {
+form {
   padding: 30px;
   border: 1px solid #f1f1f1;
-  border-radius:60px;
+  border-radius: 60px;
   background: #ffffff;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
-/* box se connecter et s'inscrire */ 
-#container h1{
-width: 38%;
-margin: auto;
+/* box se connecter et s'inscrire */
+#container h1 {
+  width: 38%;
+  margin: auto;
 }
 
 /* champs a remplir */
-input[type=text], input[type=password], input[type=email] {
+input[type="text"],
+input[type="password"],
+input[type="email"] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   border: 1px solid #cccccc;
-  border-radius:60px;
+  border-radius: 60px;
   font-family: "Rubik", sans-serif;
 }
 
-input[type=submit] {
+input[type="submit"] {
   background-color: rgb(49, 176, 92);
   color: white;
   padding: 14px 20px;
@@ -288,19 +271,19 @@ input[type=submit] {
   border: none;
   cursor: pointer;
   width: 100%;
-  border-radius:60px;
+  border-radius: 60px;
   font-family: "Rubik", sans-serif;
   transition: all 600ms;
 }
 
-input[type=submit]:hover {
+input[type="submit"]:hover {
   background-color: white;
   color: rgb(49, 176, 92);
   border: 1px solid rgb(49, 176, 92);
   transition: all 200ms;
 }
 
-input[type=checkbox] {
+input[type="checkbox"] {
   position: relative;
   width: 1em;
   height: 1em;
@@ -312,7 +295,7 @@ input[type=checkbox] {
   transition: background 175ms cubic-bezier(0.1, 0.1, 0.25, 1);
 }
 
-input[type=radio] {
+input[type="radio"] {
   position: relative;
   width: 1em;
   height: 1em;
@@ -324,14 +307,14 @@ input[type=radio] {
   transition: background 175ms cubic-bezier(0.1, 0.1, 0.25, 1);
 }
 
-input[type=checkbox]:checked {
-    border-color: rgb(49, 176, 92);
-    background: rgb(49, 176, 92);
+input[type="checkbox"]:checked {
+  border-color: rgb(49, 176, 92);
+  background: rgb(49, 176, 92);
 }
 
-input[type=radio]:checked {
-    border-color: rgb(49, 176, 92);
-    background: rgb(49, 176, 92);
+input[type="radio"]:checked {
+  border-color: rgb(49, 176, 92);
+  background: rgb(49, 176, 92);
 }
 
 .autocomplete {
@@ -363,11 +346,11 @@ input[type=radio]:checked {
 }
 .autocomplete-active {
   /*when navigating through the items using the arrow keys:*/
-  background-color: #27E293 !important;
+  background-color: #27e293 !important;
   color: #ffffff;
 }
 
 .form-row {
- margin-right: -15px;
- margin-left: -15px;
+  margin-right: -15px;
+  margin-left: -15px;
 }

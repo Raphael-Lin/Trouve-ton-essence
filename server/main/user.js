@@ -1,5 +1,5 @@
 // importation de bcrypt pour hasher le mdp 
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 //importation pour chiffrer l'email 
 const cryptojs = require("crypto-js");
@@ -39,7 +39,7 @@ bcrypt.hash(req.body.password, salt, function(err, hash){
     user
     .save()
     .then(() => res.status(201).json({ status: "ok", message : "Utilisateur créé et sauvegardé"}))
-    .catch((error) => res.status(500).json({error : error}));
+    .catch((error) => res.status(500).json({error : "Email déjà utilisé"}));
 });
 
 });
@@ -78,7 +78,8 @@ exports.login =(req, res, next) => {
         // si le mdp est correct/incorrect 
 
         if(controlPassword){
-            res.status(202).json({status: "ok", message: "le mdp est correct"})
+          res.status(202).json({status: "loginOk", message: "le mdp est correct"})
+          
         }else{
             res.status(401).json({error: "le mdp est incorrect"})
 

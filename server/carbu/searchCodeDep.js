@@ -5,7 +5,7 @@ const DEP_CODE_NUMBER = 95
 
 
 /**
- * On lit le fichier csv pour récupérer les correspondances code département et nom du département.
+ * Lit le fichier csv pour récupérer les correspondances code département et nom du département.
  */ 
 let res;
 var dataDep = fs.readFileSync('cp_departement.csv', 'utf8');
@@ -19,7 +19,7 @@ var data = dataDep.split(',' && '\n');
 
 
 /**
- * Trouve le code associé au département indiqué.
+ * Trouve le code associé au nom de département indiqué.
  */
 exports.searchCodeDepartment = function (department) {
   for(let i=0; i < DEP_CODE_NUMBER; i++){

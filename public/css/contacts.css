@@ -1,65 +1,59 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 .bod {
-    width : 100%;
-    display: flex;
-    justify-content: center;
-    font-family: "Rubik", sans-serif;
-    background-color: rgb(255, 255, 255);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-family: "Rubik", sans-serif;
+  background-color: rgb(255, 255, 255);
 }
 
-
-
 table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .container-contacts {
-    width:800px;
-    margin-top:4%;
-    border-radius: 3em; 
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  width: 800px;
+  margin-top: 4%;
+  border-radius: 3em;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 .container-contacts thead th {
-    position: sticky;
-    background-color: #ccffb8;
-    color: #1d6600;
-    font-size: 15px;
-
+  position: sticky;
+  background-color: #ccffb8;
+  color: #1d6600;
+  font-size: 15px;
 }
 
 .result-table thead th {
-    position: sticky;
-    background-color: #ccffb8;
-    color: #1d6600;
-    font-size: 15px;
-
+  position: sticky;
+  background-color: #ccffb8;
+  color: #1d6600;
+  font-size: 15px;
 }
 
 th,
 td {
-    border-bottom: 1px solid #dddddd;
-    padding: 30px;
-    
+  border-bottom: 1px solid #dddddd;
+  padding: 30px;
 }
 
-
 tr:nth-child(even) {
-    background-color: #dddddd;
+  background-color: #dddddd;
 }
 
 tr:nth-child(odd) {
-    background-color: #edeef1;
+  background-color: #edeef1;
 }
 
 caption {
-    font-family: "Rubik", sans-serif;
-    padding: 10px;  
-  }
+  font-family: "Rubik", sans-serif;
+  padding: 10px;
+}
